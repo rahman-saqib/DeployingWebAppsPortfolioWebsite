@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css">
   <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="icon" href="img/favicon.png">
 </head>
 
 <body>
@@ -47,7 +48,8 @@
       <div data-animate="fadeInDown" class="logo"><img src="img/logo-big.png" alt="logo" width="120"></div>
       <h1 data-animate="fadeInDown" class="text-shadow mb-5">Hello, hola, नमस्ते !</h1>
       <p data-animate="slideInUp" class="h3 text-shadow text-400">Do you worry hosting your website?</p>
-      <p data-animate="slideInUp" class="h2 text-shadow text-200">"I will provide you with the Fuel for the digital era !"</p>
+      <p data-animate="slideInUp" class="h2 text-shadow text-200">"I will provide you with the Fuel for the digital era
+        !"</p>
     </div>
   </section>
   <!-- About-->
@@ -148,7 +150,8 @@
       </header>
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <form id="contact-form" method="post" action="contact.php" role="form">
+          <form name="contact-form" id="contact-form" target="_blank" method="POST" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdSR210vM7jYe8tYgv2wWDpR6kAvVcVO1WM5W3H0EG3gUacPg/formResponse" role="form"
+            onsubmit="return contactformvalidate()">
 
             <div class="messages"></div>
 
@@ -158,7 +161,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="form_name">Firstname *</label>
-                    <input id="form_name" type="text" name="name" class="form-control"
+                    <input id="form_name" type="text" name="entry.1935284627" class="form-control"
                       placeholder="Please enter your firstname *" required="required"
                       data-error="Firstname is required.">
                     <div class="help-block with-errors"></div>
@@ -167,7 +170,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="form_lastname">Lastname *</label>
-                    <input id="form_lastname" type="text" name="surname" class="form-control"
+                    <input id="form_lastname" type="text" name="entry.1717941277" class="form-control"
                       placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
                     <div class="help-block with-errors"></div>
                   </div>
@@ -177,31 +180,41 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="form_email">Email *</label>
-                    <input id="form_email" type="email" name="email" class="form-control"
+                    <input id="form_email" type="email" name="entry.1922988983" class="form-control"
                       placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
+
+                <div class="col-md-6">
                   <div class="form-group">
-                    <label for="form_message">Message *</label>
-                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *"
-                      rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                    <label for="form_lastname">Subject *</label>
+                    <input id="form_subject" type="text" name="entry.1039437709" class="form-control"
+                      placeholder="Please enter the subject *" required="required" data-error="Subject is required.">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
-                <div class="col-md-12">
-                  <input type="submit" class="btn btn-success btn-send" value="Send message">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="form_message">Message *</label>
+                  <textarea id="form_message" name="entry.676902135" class="form-control" placeholder="Message for me *"
+                    rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                  <div class="help-block with-errors"></div>
                 </div>
               </div>
-
+              <div class="col-md-12">
+                <input type="submit" class="btn btn-success btn-send" value="Send message">
+              </div>
             </div>
 
-          </form>
         </div>
+
+        </form>
       </div>
+    </div>
     </div>
   </section>
   <!-- Map-->
@@ -224,6 +237,7 @@
     </div>
   </footer>
   <!-- JavaScript files-->
+  <script src="js/formvalidation.js"></script>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
@@ -232,6 +246,37 @@
   <script src="vendor/jquery.counterup/jquery.counterup.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"> </script>
   <script src="js/front.js"></script>
+  <script>
+    function contactformvalidate() {
+      var name = document.forms["contact-form"]["name"];
+      var email = document.forms["contact-form"]["surname"];
+      var phone = document.forms["contact-form"]["email"];
+      var what = document.forms["contact-form"]["message"];
+
+      if (name.value == "") {
+        window.alert("Please enter your name.");
+        name.focus();
+        return false;
+      }
+      if (surname.value == "") {
+        window.alert("Please enter your surname.");
+        surname.focus();
+        return false;
+      }
+
+      if (email.value == "") {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+      }
+
+      if (message.value == "") {
+        window.alert("Enter a message!");
+        message.focus();
+        return false;
+      }
+      return true;
+    }</script>
 </body>
 
 </html>
